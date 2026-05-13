@@ -10,37 +10,41 @@ export function ServicesSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-12 transition-all duration-700 md:mb-16 ${
+          className={`mb-8 transition-all duration-700 md:mb-12 ${
             isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Услуги
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Наши компетенции</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Простая вибродиагностика за 5 000–10 000 ₽</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-10 lg:gap-x-24">
           {[
             {
-              title: "Веб-разработка",
-              description: "Создание современных веб-приложений любой сложности",
+              title: "Базовый замер",
+              description: "До 3 точек измерения — 5 000 ₽. Приедем, установим датчики за 30 минут, снимем спектр вибрации по 3 осям.",
               direction: "top",
+              price: "5 000 ₽",
             },
             {
-              title: "UI/UX Дизайн",
-              description: "Проектирование удобных и красивых интерфейсов",
+              title: "Расширенный анализ",
+              description: "До 10 точек измерения — 10 000 ₽. Полная диагностика всех узлов компрессора с эталонным сравнением.",
               direction: "right",
+              price: "10 000 ₽",
             },
             {
-              title: "Мобильные приложения",
-              description: "Кроссплатформенная разработка для iOS и Android",
+              title: "Абонемент на год",
+              description: "4 замера в год — 25 000 ₽ (экономия 15%). Регулярный мониторинг — лучшая защита от внезапных поломок.",
               direction: "left",
+              price: "25 000 ₽/год",
             },
             {
-              title: "Консалтинг",
-              description: "Техническая экспертиза и стратегическое планирование",
+              title: "Отчёт в PDF",
+              description: "Каждый клиент получает заключение: какие узлы скоро откажут и когда. Никаких подписок, никакого дорогого ПО.",
               direction: "bottom",
+              price: "Включено",
             },
           ].map((service, i) => (
             <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
@@ -56,7 +60,7 @@ function ServiceCard({
   index,
   isVisible,
 }: {
-  service: { title: string; description: string; direction: string }
+  service: { title: string; description: string; direction: string; price: string }
   index: number
   isVisible: boolean
 }) {
@@ -88,6 +92,7 @@ function ServiceCard({
       <div className="mb-3 flex items-center gap-3">
         <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
         <span className="font-mono text-xs text-foreground/60">0{index + 1}</span>
+        <span className="ml-auto font-mono text-xs font-medium text-foreground/80">{service.price}</span>
       </div>
       <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">{service.title}</h3>
       <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">{service.description}</p>
